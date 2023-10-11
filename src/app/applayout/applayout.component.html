@@ -1,0 +1,13 @@
+<div  [ngSwitch]='user'>
+
+    <div *ngSwitchCase="'admin'" >
+        <app-admin></app-admin>
+    </div>
+    <div *ngSwitchCase="'user'" >
+        <app-user></app-user>
+    </div>
+    <div *ngSwitchDefault>
+        <app-errorlayout></app-errorlayout>
+    </div>
+
+</div>

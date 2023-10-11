@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active{
+    color: rgb(223, 49, 87);
+    font-weight: 600;
+}

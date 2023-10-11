@@ -1,0 +1,23 @@
+<div class="flex flex-row w-full h-8  items-center justify-between bg-gray-400">
+    <div class="4/ ms-12 text-red-600 font-bold">
+        BuySmart
+    </div>
+    
+    <div class="navmenu w-6/12 md:flex  hidden justify-start gap-10 ">
+        <div><a routerLink="" [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="'active'">Home</a></div>
+        <div><a routerLink="about" [routerLinkActive]="'active'">About</a></div>
+        <div><a routerLink="product" [routerLinkActive]="'active'">Product</a></div>
+        <div><a routerLink="contact" [routerLinkActive]="'active'">Contact</a></div>
+    </div>
+    <fa-icon class="sm:visible md:hidden lg:hidden me-8" [icon]="famenu" (click)="togglemenu()" *ngIf="menu"></fa-icon>
+    <fa-icon class="sm:visible md:hidden lg:hidden me-8" [icon]="faclose" (click)="togglemenu()" *ngIf="!menu"></fa-icon>
+
+    
+    
+</div>
+<div class="mobilenav md:hidden lg:hidden flex flex-col bg-gray-500 py-4 " *ngIf="toggle">
+        <div class="w-full bg-gray-500 hover:bg-gray-400 ps-4 " (click)="changetogglestate()"><a routerLink=""  [routerLinkActiveOptions]="{exact:true}"  [routerLinkActive]="'active'">Home</a></div>
+        <div class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="/about" [routerLinkActive]="'active'" >About</a></div>
+        <div class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="/product" [routerLinkActive]="'active'">Product</a></div>
+        <div class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="/contact" [routerLinkActive]="'active'">Contact</a></div>
+</div>

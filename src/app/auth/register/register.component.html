@@ -1,0 +1,48 @@
+<div class="h-full flex justify-center items-center bg-gray-100">
+    <div class="bg-white px-6  rounded shadow-md w-full my-8 sm:w-96">
+        <h2 class="text-2xl font-semibold mb-6 text-center">Register</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div formGroupName="personaldetail">
+
+                <div class="mb-1">
+                    <label for="name" class="block text-sm font-medium text-gray-600">Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 p-2 w-full border rounded-sm" formControlName="username">
+                </div>
+                <div class="mb-1">
+                    <label for="address" class="block text-sm font-medium text-gray-600">Address</label>
+                    <input type="text" id="address" name="address" class="mt-1 p-2 w-full border rounded-sm" formControlName="useraddress">
+                </div>
+                <div class="mb-1">
+                    <label for="phone" class="block text-sm font-medium text-gray-600">Contact Number</label>
+                    <input type="number" id="phone" name="phone" class="mt-1 p-2 w-full border rounded-sm" formControlName="usercontact">
+                    <span class="text-red-700" *ngIf="!registerForm.get('personaldetail.usercontact').valid && registerForm.get('personaldetail.usercontact').touched">Phone number is not valid.</span>
+                </div>
+                <div class="mb-1">
+                    <label for="gender" class="block text-sm font-medium text-gray-600">Gender</label>
+                    <select id="gender" name="gender" class="mt-1 p-2 w-full border rounded-md" formControlName="usergender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-1">
+                <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
+                <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-sm" formControlName="useremail">
+                <span class="text-red-700" *ngIf="!registerForm.get('useremail').valid && registerForm.get('useremail').touched">email is not valid.</span>
+            </div>
+            <div class="mb-1">
+                <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+                <input type="password" id="password" name="password" class="mt-1 p-2 w-full border rounded-sm"formControlName="userpassword">
+                <span class="text-red-700" *ngIf="!registerForm.get('userpassword').valid && registerForm.get('userpassword').touched">Password length must be grater than 4 letters or less than 16.</span>
+            </div>
+           
+            <div class="my-6">
+                <input type="submit" value="Submit"
+                    class="w-full bg-blue-500 mb-8 text-white p-2 rounded hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200"
+                    placeholder="Register">
+                   
+            </div>
+        </form>
+    </div>
+</div>

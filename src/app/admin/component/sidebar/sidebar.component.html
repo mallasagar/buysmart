@@ -1,0 +1,39 @@
+<div >
+    <div class="flex  justify-start h-screen bg-slate-400 ">
+        <div class="mx-auto flex flex-col  gap-4 mt-8">
+            <h2 class="text-2xl mt-4 font-bold text-gray-900">ADMIN PANEL </h2>
+            <hr> 
+            <div class="flex flex-row gap-2 justify-start">
+                <!-- <img [src]="dashboardimg" class=" object-cover h-5 w-5 "> -->
+                <fa-icon [icon]="faDashboard"></fa-icon>
+                <h3>Dashboard</h3>
+            </div>
+            <div class="flex flex-row gap-2 justify-start">
+                <fa-icon [icon]="faproduct"></fa-icon>
+                <a routerLink="/admin/addproduct">
+                    <h3>Add Product</h3>
+                </a>
+            </div>
+            <div class="flex flex-row gap-2 justify-start">
+                <fa-icon [icon]="fasetting"></fa-icon>
+                <a routerLink="/admin/editproduct">
+                    <h3>Edit Product</h3>
+                </a>
+            </div>
+            <div class="flex flex-row gap-2 justify-start">
+                <fa-icon [icon]="fadelete"></fa-icon>
+                <a routerLink="/admin/deleteproduct">
+                    <h3>Delete Product</h3>
+                </a>
+            </div>
+            
+            <hr> 
+            <div class="flex flex-row gap-2 justify-start">
+                <fa-icon [icon]="falogout"></fa-icon>
+                <h3>LogOut</h3>
+            </div>
+        </div>
+
+    </div>
+
+</div>
