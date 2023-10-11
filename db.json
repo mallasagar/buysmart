@@ -1,157 +1,40 @@
 {
   "users": [
     {
-      "loginemail": "admin@gmail.com",
-      "loginpassword": "admin",
-      "role": "admin",
-      "id": 1
-    },
-    {
-      "loginemail": "sagarmalla@gmail.com",
-      "loginpassword": "AgeraRS46",
-      "id": 2
-    },
-    {
-      "loginemail": "sdsasd@gmail.com",
-      "loginpassword": "@gmail.com",
-      "id": 3
-    },
-    {
-      "loginemail": "amds@gmail.com",
-      "loginpassword": "akdnad",
-      "id": 4
-    },
-    {
       "personaldetail": {
         "username": "sagar malla",
         "useraddress": "imadol lalitpur",
-        "usercontact": 9821232122,
-        "usergender": "male",
-        "useremail": "sagar@gmail.com"
-      },
-      "userrole": "user",
-      "userpassword": "sagar",
-      "id": 5
-    },
-    {
-      "personaldetail": {
-        "username": "ajdan ad ad",
-        "useraddress": "adna a",
-        "usercontact": 1232345678,
-        "usergender": "male",
-        "useremail": "nasnda@gmail.com"
-      },
-      "userrole": "user",
-      "userpassword": "dadna",
-      "id": 6
-    },
-    {
-      "personaldetail": {
-        "username": "ajdan ad ad",
-        "useraddress": "adna a",
-        "usercontact": 1232345678,
-        "usergender": "male",
-        "useremail": "nasnda@gmail.com"
-      },
-      "userrole": "user",
-      "userpassword": "dadna",
-      "id": 7
-    },
-    {
-      "personaldetail": {
-        "username": "sagar malla",
-        "useraddress": "imadol lalitpur",
-        "usercontact": 9812212445,
+        "usercontact": 9821234543,
         "usergender": "male"
       },
       "useremail": "admin@gmail.com",
-      "userrole": "user",
-      "userpassword": "agera",
-      "id": 8
-    },
-    {
-      "personaldetail": {
-        "username": "sagar malla",
-        "useraddress": "imadol lalitpur",
-        "usercontact": 9812221234,
-        "usergender": "male"
-      },
-      "useremail": "zd@gmail.com",
-      "userrole": "user",
-      "userpassword": "daadada",
-      "id": 9
-    },
-    {
-      "personaldetail": {
-        "username": "sagar malla",
-        "useraddress": "imadol lalitpur",
-        "usercontact": 9812786789,
-        "usergender": "male"
-      },
-      "useremail": "sagar@gmail.com",
-      "userrole": "user",
-      "userpassword": "addwsasd",
-      "id": 10
-    },
-    {
-      "personaldetail": {
-        "username": "sagar malla",
-        "useraddress": "imadol lalitpur",
-        "usercontact": 9812332321,
-        "usergender": "male"
-      },
-      "useremail": "malla@gmail.com",
-      "userrole": null,
-      "userpassword": "admin123",
-      "id": 11
-    },
-    {
-      "personaldetail": {
-        "username": "sagar",
-        "useraddress": "imadol lalitpur",
-        "usercontact": 9182829201,
-        "usergender": "male"
-      },
-      "useremail": "sagar@gmail.com",
-      "userrole": null,
-      "userpassword": "agera",
-      "id": 12
-    },
-    {
-      "personaldetail": {
-        "username": "saagar ",
-        "useraddress": "imadol lalitpur",
-        "usercontact": 9812223454,
-        "usergender": "male"
-      },
-      "useremail": "andnsa@gmail.com",
-      "userrole": null,
-      "userpassword": "agera",
-      "id": 13
-    },
-    {
-      "personaldetail": {
-        "username": "sagar malla",
-        "useraddress": "imadol lalitpur",
-        "usercontact": 9812324567,
-        "usergender": "male"
-      },
-      "useremail": "aojda@gmail.com",
-      "userrole": "user",
+      "userrole": "admin",
       "userpassword": "admin",
-      "id": 14
+      "id": 1
     },
     {
       "personaldetail": {
-        "username": "adam",
-        "useraddress": "lambert",
-        "usercontact": 9812234567,
+        "username": "nitesh karki",
+        "useraddress": "sitapaila",
+        "usercontact": 9812322231,
         "usergender": "male"
       },
-      "useremail": "adami@gmail.com",
+      "useremail": "niteshkarki@gmail.com",
       "userrole": "user",
-      "userpassword": "adsado",
-      "id": 15
+      "userpassword": "nitesh",
+      "id": 2
+    },
+    {
+      "personaldetail": {
+        "username": "sagarmalla@gmail.com",
+        "useraddress": "imadol lalitpur",
+        "usercontact": 9878698763,
+        "usergender": "male"
+      },
+      "useremail": "sagar@gmail.com",
+      "userrole": "user",
+      "userpassword": "sagar",
+      "id": 3
     }
   ]
 }

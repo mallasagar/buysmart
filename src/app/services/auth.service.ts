@@ -8,13 +8,13 @@ export class authenticationService  {
         //     console.log(username.loginpassword)
         // }
 
-
+      
         
         userstate:string='user'
         auth(username:any): string {
             if (username.loginemail === 'admin@gmail.com' &&  username.loginpassword=== 'admin') {
                 // this.userstate='admin';
-                console.log('Authentication');
+           
           return this.userstate='admin';
         }
         // this.userstate='user';

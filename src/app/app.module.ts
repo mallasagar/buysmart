@@ -68,7 +68,9 @@ const route:Routes =[
     ReactiveFormsModule, 
     HttpClientModule,
     BrowserAnimationsModule, 
-    ToastrModule.forRoot({}),
+    ToastrModule.forRoot({
+      timeOut: 1000,
+    }),
     // NgxWebstorageModule
   ],
   providers: [],
