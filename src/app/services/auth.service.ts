@@ -1,32 +1,33 @@
 
 export class authenticationService  {
 
-    private loggedIn = false;
-    // auth(username: string):boolean{
+    private loggedIn = false;  
         
-        //     console.log(username.loginemail)
-        //     console.log(username.loginpassword)
-        // }
+    userstate:string='user'
+    auth(username:string) {
+            if (username='admin'){
+              console.log('you are admin')
+            
+              const state='admin'
+              // return this.userstate=localStorage.setItem('user',state)
+              return localStorage.setItem('user',state);
+            }
 
-      
-        
-        userstate:string='user'
-        auth(username:any): string {
-            if (username.loginemail === 'admin@gmail.com' &&  username.loginpassword=== 'admin') {
-                // this.userstate='admin';
-           
-          return this.userstate='admin';
-        }
-        // this.userstate='user';
-        console.log('unAuthentication')
-        return this.userstate='user';
+            else if(username='user') {
+              console.log('you are users not admin')
+              // return this.userstate='user';
+              
+              return 
+        }  
+            else{
+              const state='invalid'
+              localStorage.setItem('user',state);
+            }
       }
-
-
-
-
+           
+      
+    }
  
 
 
 
-}

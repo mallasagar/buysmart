@@ -11,9 +11,7 @@
     </div>
     <fa-icon class="sm:visible md:hidden lg:hidden me-8" [icon]="famenu" (click)="togglemenu()" *ngIf="menu"></fa-icon>
     <fa-icon class="sm:visible md:hidden lg:hidden me-8" [icon]="faclose" (click)="togglemenu()" *ngIf="!menu"></fa-icon>
-
-    
-    
+        
 </div>
 <div class="mobilenav md:hidden lg:hidden flex flex-col bg-gray-500 py-4 " *ngIf="toggle">
         <div class="w-full bg-gray-500 hover:bg-gray-400 ps-4 " (click)="changetogglestate()"><a routerLink=""  [routerLinkActiveOptions]="{exact:true}"  [routerLinkActive]="'active'">Home</a></div>

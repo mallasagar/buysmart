@@ -35,6 +35,18 @@
       "userrole": "user",
       "userpassword": "sagar",
       "id": 3
+    },
+    {
+      "personaldetail": {
+        "username": "ram shaym",
+        "useraddress": "nepal",
+        "usercontact": 1222918283,
+        "usergender": "male"
+      },
+      "useremail": "ram@gmail.com",
+      "userrole": "user",
+      "userpassword": "ram123",
+      "id": 4
     }
   ]
 }

@@ -14,40 +14,51 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private http:HttpClient, private authservice:authenticationService,private toast: ToastrService,private router:Router){
-  }
+  } 
+  // form validation
   ngOnInit() {
     this.loginForm = new FormGroup({
       loginemail: new FormControl(null, [Validators.required, Validators.email]),
       loginpassword: new FormControl(null, Validators.required),
     })
+  
   }
-
+// authentication call
   authcall(){
       this.http.get<any>('http://localhost:3000/users')
       .subscribe((data)=>{
       const user = data.find((a:any)=>{
-      return a.useremail=== this.loginForm.value.loginemail && a.userpassword=== this.loginForm.value.loginpassword&&a.userrole==="admin"
-    })
-      const users = data.find((a:any)=>{
+         return a.useremail=== this.loginForm.value.loginemail && a.userpassword=== this.loginForm.value.loginpassword&&a.userrole==="admin" 
+        })
+        const users = data.find((a:any)=>{        
       return a.useremail=== this.loginForm.value.loginemail && a.userpassword=== this.loginForm.value.loginpassword&&a.userrole==="user"
     })
      if(user){
-       this.router.navigate(['/admin'])
-        this.toast.success('login successfull with admin')
-        this.loginForm.reset()
-     }else{
-     if(users){
-       this.router.navigate(['/'])
-        this.toast.success('login successfull with users')
-        this.loginForm.reset()
+       this.authservice.auth('admin')
+       this.toast.success('login successfull with admin');
+       localStorage.setItem('user','admin')  
+       this.loginForm.reset()
+      window.location.reload();  
+      }
+    //  }else{
+     else if(users){
+      //  this.router.navigate(['/'])
+      this.authservice.auth('user')
+      this.toast.success('login successfull with users')
+      localStorage.setItem('user','user')
+      this.loginForm.reset()
+      window.location.reload();
+
      }else{
       this.toast.error('user not found')
-     }}
+     }
+   
    })
   }
   onLogin(){
     if(this.loginForm.valid){
-      this.authcall()      
+      this.authcall()  
+      
     }
     else{
       this.toast.error('fill up the form.')
