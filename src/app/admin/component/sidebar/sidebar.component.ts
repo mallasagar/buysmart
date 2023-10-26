@@ -18,8 +18,8 @@ export class SidebarComponent {
   faproduct=faBox
 
 logout(){
-  localStorage.setItem('user','user')
-  this.router.navigate(['/login'])
+  sessionStorage.setItem('user','user')
+  // this.router.navigate(['login'])
   window.location.reload()
 }
 

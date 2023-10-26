@@ -26,6 +26,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import{HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserlistComponent } from './admin/component/userlist/userlist.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatDialogModule } from '@angular/material/dialog';
+import { UpdateproductComponent } from './admin/component/editproduct/updateproduct/updateproduct.component'
 // import {NgxWebstorageModule} from 'ngx-webstorage';
 
 const route:Routes =[
@@ -58,7 +62,10 @@ const route:Routes =[
     ErrorComponent,
     ErrorlayoutComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserlistComponent,
+    HomeComponent,
+    UpdateproductComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +78,9 @@ const route:Routes =[
     ToastrModule.forRoot({
       timeOut: 1000,
     }),
+    MatSlideToggleModule
     // NgxWebstorageModule
+    ,MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

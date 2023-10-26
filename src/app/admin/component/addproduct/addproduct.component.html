@@ -1,1 +1,53 @@
-<p>addproduct works!</p>
+
+<div class="flex flex-col w-full h-fit justify-center items-center my-4 ">
+    <h1 class="text-lg font-bold">Create Products</h1>
+    <form class="md:w-7/12 sm:w-10/12 w-12/12  " [formGroup]="productForm" (ngSubmit)="addProduct()">
+    <div class=" flex w-12/12 gap-1 flex-col justify-center align-middle mt-4 rounded-lg sm:p-4 md:p-8  p-2 bg-gray-600">
+            <label>Product Name:</label>
+            <input type="name" class="border "  formControlName="productname">
+            <div class="flex flex-row justify-between">
+                <div class="flex flex-col">
+                 <label>Make Years:</label>
+                    <select  class="border " formControlName="productmakeyear" >
+                        <option value="selected"> Make Year:</option>"
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                    </select>
+                </div>
+                <div class="flex flex-col">
+                    <label>Quantity:</label>
+                    <input type="number" class="border " placeholder="stock available" formControlName="productstock" > 
+                </div>
+            </div>
+            <label>Product Description:</label>
+            <textarea type="text" class="border "  formControlName="productdescription"></textarea>
+            <label>Brand:</label>
+            <input type="text" class="border " formControlName="productbrand" >
+            <h5>colors : </h5>
+            <div class="flex flex-row gap-2">
+                <input  type="checkbox"id="redcolor" formControlName="colorred"/>
+                <label for="redcolor">Red</label>
+                <input  type="checkbox"id="blackcolor" formControlName="colorblack"/>
+                <label for="blackcolor">Black</label>
+                <input  type="checkbox"id="bluecolor" formControlName="colorblue"/>
+                <label for="bluecolor">Blue</label>
+                <input  type="checkbox"id="whitecolor"formControlName="colorwhite"/>
+                <label for="whitecolor">White</label>
+                <input  type="checkbox"id="greycolor" formControlName="colorblack"/>
+                <label for="greycolor">Grey</label>
+            </div>
+           <input type="text" placeholder="image url:" formControlName="productpic">
+           <!-- <input type="file" (change)="getFile($event)"> -->
+            <label>Price:</label>
+            <input type="number" class="border " placeholder="$" formControlName="productprice" > 
+            <input type="submit" value="addProduct" class="mt-4 p-2 bg-blue-200 ">
+        </div>
+    </form>
+</div>

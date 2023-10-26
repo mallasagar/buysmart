@@ -1,0 +1,38 @@
+<div class="flex  justify-center text-center w-11/12 h-auto  mb-12 ">
+    <table  class=" w-full h-auto" >
+        <caption class="caption-top my-7">
+            <h1>
+                List of Users
+            </h1>
+          </caption>
+        <thead class="bg-slate-400  ">
+            <tr>
+                <td>NAME</td>
+                <td>EMAIL</td>
+                <td>PHONE</td>
+                <td>GENDER</td>
+                <td>ADDRESS</td>
+                <td>MODIFY</td>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let item of userarray " class=" border-2 border-gray-100 w-full rounded-lg">
+                <td>{{item.personaldetail.username}}</td>
+                <td>{{item.useremail}}</td>
+                <td>{{item.personaldetail.usercontact}}</td>
+                <td>{{item.personaldetail.usergender}}</td>
+                <td>{{item.personaldetail.useraddress}}</td>
+                <td class="flex flex-col items-center justify-evenly gap-2">
+                    <div>
+                        <fa-icon [icon]="fadelete"></fa-icon>
+                    </div>
+                </td>
+            </tr>
+           
+
+        </tbody>
+
+
+    </table>
+
+</div>

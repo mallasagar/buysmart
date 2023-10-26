@@ -8,6 +8,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent {
   BrandTitle:String = 'BUY SMART'
-  faprofile=faUser
+  faprofile=faUser;
+  
 ;
 }
