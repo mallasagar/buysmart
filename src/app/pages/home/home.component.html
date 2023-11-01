@@ -1,5 +1,5 @@
-<div class="rounded  flex flex-row flex-wrap w-full gap-4 justify-center my-8" >
-  <div class="flex flex-col justify-center w-2/12 rounded-lg align-middle  overflow-hidden shadow-lg content-center items-center hover:bg-gray-300 bg-gray-100 my-4"  *ngFor="let item of objectarray ">
+<div class="rounded  flex flex-col sm-flex-row md:flex-row flex-wrap w-full  content-center gap-6 justify-center my-8" >
+  <div class="flex flex-col justify-center  sm:w-6/12 md:w-3/12 rounded-lg align-middle  overflow-hidden shadow-lg content-center items-center hover:bg-gray-300 bg-gray-100 my-4"  *ngFor="let item of objectarray ">
 
     <img class="w-50 h-40 mt-4" src={{item.productpic}} alt="Product Image">
     <div class="px-6 py-4">
@@ -16,10 +16,10 @@
         Price : $ {{item.productprice}}     </p>
       </div>
       <div class=" flex flex-row gap-2 justify-evenly px-1 pb-4 pt-2">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" (click)="getproductbyid(item.id)">
           Learn More
         </button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" (click)="addtocart(item.id)">
           <fa-icon [icon]="facart"></fa-icon>
         </button>
       </div>

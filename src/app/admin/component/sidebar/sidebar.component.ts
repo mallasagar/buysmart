@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faDashboard, faGear,faTrash,  faRightToBracket , faBox} from '@fortawesome/free-solid-svg-icons';
+import { faDashboard, faGear,faTrash , faBox, faList} from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
@@ -14,14 +14,10 @@ export class SidebarComponent {
   faDashboard = faDashboard;
   fasetting=faGear;
   fadelete=faTrash;
-  falogout=faRightToBracket;
+  
   faproduct=faBox
+  falist=faList
 
-logout(){
-  sessionStorage.setItem('user','user')
-  // this.router.navigate(['login'])
-  window.location.reload()
-}
 
 
 }

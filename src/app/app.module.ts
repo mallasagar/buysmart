@@ -29,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserlistComponent } from './admin/component/userlist/userlist.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDialogModule } from '@angular/material/dialog';
-import { UpdateproductComponent } from './admin/component/editproduct/updateproduct/updateproduct.component'
+import { UpdateproductComponent } from './admin/component/editproduct/updateproduct/updateproduct.component';
+import { CartComponent } from './user/cart/cart.component'
 // import {NgxWebstorageModule} from 'ngx-webstorage';
 
 const route:Routes =[
@@ -40,6 +41,7 @@ const route:Routes =[
   {path: 'product', component:DetailComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
+  {path:'mycart', component:CartComponent},
   {path:'**', component:ErrorComponent},
 ];
 
@@ -65,7 +67,8 @@ const route:Routes =[
     RegisterComponent,
     UserlistComponent,
     HomeComponent,
-    UpdateproductComponent
+    UpdateproductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

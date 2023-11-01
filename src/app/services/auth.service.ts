@@ -1,4 +1,5 @@
 
+import { HttpClient } from '@angular/common/http';
 export class authenticationService  {
 
     private loggedIn = false;  

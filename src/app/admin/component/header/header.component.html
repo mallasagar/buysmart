@@ -1,7 +1,6 @@
-<div class=" fixed flex flex-row justify-between bg-gray-100 w-full  py-2" >
-    <h3 class="ms-2">{{BrandTitle}}</h3>
-    <div class="flex flex-row gap-4">
-        <fa-icon [icon]="faprofile"></fa-icon>
-        <span class="me-2"></span>
-    </div>
+<div class=" flex flex-row fixed justify-between items-center z-10 p-2 bg-gray-300 text-black w-screen h-9 " >
+    <span class="text-red-600 font-serif text-md font-bold ms-16"> 
+          <fa-icon class="me-4 text-black" [icon]="faprofile"></fa-icon>{{ admin}}
+    </span>
+    <fa-icon [icon]="falogout" class="text-xl me-16 " (click)="logout()"></fa-icon>
 </div>

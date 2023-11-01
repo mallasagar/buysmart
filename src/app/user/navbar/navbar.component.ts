@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { faBars,faXmark} from '@fortawesome/free-solid-svg-icons';
+import { faBars,faXmark, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { GetallUsersService } from 'src/app/services/getallusers.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +11,32 @@ import { faBars,faXmark} from '@fortawesome/free-solid-svg-icons';
 export class NavbarComponent implements OnInit{
   famenu=faBars
   faclose=faXmark
+  falogout=faRightFromBracket
+  faprofile=faUser;
   // aftertoggle:boolean=!this.toggle;
+  isloggedin:Boolean
+  userid:number;
   
+  toggle:boolean = false;
+  menu:boolean = true;
+  userinfo:any;
+  userdata:any;
+  username:string=null;;
+
+  
+constructor(private userbyid:GetallUsersService ){}
+
   ngOnInit(): void {
+   this.isloggedin=Boolean(sessionStorage.getItem('userrole'));
+   this.userid=Number(sessionStorage.getItem('id'));
+    this.userdata=this.userbyid.getuserbyid(this.userid).subscribe((users)=>{
+      if(users){
+        this.userinfo=users;
+        this.username=this.userinfo.personaldetail.username
+      }
+    })
   }
-    toggle:boolean = false;
-    menu:boolean = true;
-      
-    togglemenu(){
+  togglemenu(){
       this.toggle=!this.toggle;
       this.menu=!this.menu;
   }
@@ -28,6 +48,14 @@ export class NavbarComponent implements OnInit{
     else{
       this.toggle=true;
     }
+  }
+
+  logoutuser(){
+    sessionStorage.removeItem('Loggedin');
+    sessionStorage.removeItem('userrole');
+    sessionStorage.removeItem('id');
+    window.location.reload();
+
   }
 
 }

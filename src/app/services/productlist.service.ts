@@ -6,16 +6,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProductlistService {
   constructor(private http:HttpClient,private toast: ToastrService) { }
-  
   productdata:any;
+  producttocart:number;
   productlist(){
      return this.http.get('http://localhost:3000/products/')
-
-    // this.http.get('http://localhost:3000/products')
-    // .subscribe((data)=>{
-      
-    //  return data
   }
 
-  
+  addproducttocartbyid(productid:number){
+    this.producttocart=productid
+  }
 }

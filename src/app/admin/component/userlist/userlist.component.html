@@ -24,7 +24,7 @@
                 <td>{{item.personaldetail.useraddress}}</td>
                 <td class="flex flex-col items-center justify-evenly gap-2">
                     <div>
-                        <fa-icon [icon]="fadelete"></fa-icon>
+                        <fa-icon [icon]="fadelete" class="hover:opacity-50" (click)='deleteuser( item.id)'></fa-icon>
                     </div>
                 </td>
             </tr>

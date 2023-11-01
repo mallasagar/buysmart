@@ -1,10 +1,10 @@
 
-    <mat-dialog-content>
-         <button class="inline-block float-right" mat-dialog-close="close">X</button>
+    <mat-dialog-content class="rounded-xl">
+        <button class="inline-block float-right" mat-dialog-close="close">X</button>
         <header>
             Update Products
         </header>
-            <form class="text-black" [formGroup]="productForm" (ngSubmit)="UpdateProduct()">
+            <form class="text-black" [formGroup]="productForm" (ngSubmit)='UpdateProduct()'>
                 <div class=" flex w-12/12 gap-1 flex-col justify-center align-middle mt-4 rounded-lg sm:p-4 md:p-8  p-2 bg-gray-600">
                     <label>Product Name:</label>
                     <input type="name" class="border "  formControlName="productname">

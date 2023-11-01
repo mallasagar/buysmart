@@ -34,8 +34,7 @@ export class UpdateproductComponent implements OnInit{
       productprice:new FormControl(this.data.productprice, [Validators.min(0),Validators.max(10000)]),
     })
   }
-
-
+ 
   UpdateProduct(){
     if(this.productForm.valid){
       this.updateservice.updateproduct(this.data.id,this.productForm);

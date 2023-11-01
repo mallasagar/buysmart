@@ -14,13 +14,14 @@ export class ApplayoutComponent implements OnInit {
   
   ngOnInit() {
     
-    this.user=sessionStorage.getItem('user');
+    this.user=sessionStorage.getItem('userrole');
     if(this.user==='admin'){
      this.router.navigate(['/admin'])
     }
     else if(this.user==='user'){
      this.router.navigate(['/home'])
-    } else{
+    }
+    else{
       this.user='user'
       this.router.navigate(['/home'])
     }

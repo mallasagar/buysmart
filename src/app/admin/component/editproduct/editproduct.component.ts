@@ -45,7 +45,6 @@ export class EditproductComponent {
    this.productbyid=this.UpdateProductService.productupdate(this.productid).subscribe((product)=>{
      if(product){
        this.productbyid=product
-       console.log(this.productbyid)
        this.matdialog.open(UpdateproductComponent,{
         width:'900px',
         data:{
@@ -71,7 +70,6 @@ export class EditproductComponent {
   // delete product by id
   deleteproduct(productid:number) {
     this.productid=productid
-    console.log("for delete id ", this.productid)
     this.UpdateProductService.productdelete(this.productid).subscribe((product)=>{
       if(product){
         this.productbyid=product;

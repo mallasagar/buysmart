@@ -1,21 +1,32 @@
 <div class="flex flex-row w-full h-8  items-center justify-between bg-gray-400">
-    <div class="4/ ms-12 text-red-600 font-bold">
+    <div class=" sm:2/12 md:4/12 ms-6 md:ms-12  text-red-600 font-bold">
         BuySmart
     </div>
-    
-    <div class="navmenu w-6/12 md:flex  hidden justify-start gap-10 ">
+    <div class="navmenu sm-8/12 md:w-6/12 md:flex  hidden justify-start gap-8 ">
         <div><a routerLink="" [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="'active'">Home</a></div>
-        <div><a routerLink="about" [routerLinkActive]="'active'">About</a></div>
-        <div><a routerLink="product" [routerLinkActive]="'active'">Product</a></div>
-        <div><a routerLink="contact" [routerLinkActive]="'active'">Contact</a></div>
+    
+            <div *ngIf="!isloggedin"><a routerLink="about" [routerLinkActive]="'active'">About</a></div>
+            <div *ngIf="!isloggedin"><a routerLink="product" [routerLinkActive]="'active'">Product</a></div>
+            <div *ngIf="!isloggedin"><a routerLink="contact" [routerLinkActive]="'active'">Contact</a></div>
+        
+            <div *ngIf="isloggedin"><a routerLink="mycart" [routerLinkActive]="'active'">My Carts</a></div>
+                <div *ngIf="isloggedin"><a routerLink="order" [routerLinkActive]="'active'">My Orders</a></div>
+                <div *ngIf="isloggedin" class="flex gap-2"> <fa-icon [icon]="faprofile"></fa-icon><span class=" text-red-600 font-bold">{{username}}</span></div>
+                <div *ngIf="isloggedin" ><fa-icon [icon]="falogout" (click)="logoutuser()" ></fa-icon></div>
     </div>
     <fa-icon class="sm:visible md:hidden lg:hidden me-8" [icon]="famenu" (click)="togglemenu()" *ngIf="menu"></fa-icon>
     <fa-icon class="sm:visible md:hidden lg:hidden me-8" [icon]="faclose" (click)="togglemenu()" *ngIf="!menu"></fa-icon>
-        
+
 </div>
 <div class="mobilenav md:hidden lg:hidden flex flex-col bg-gray-500 py-4 " *ngIf="toggle">
-        <div class="w-full bg-gray-500 hover:bg-gray-400 ps-4 " (click)="changetogglestate()"><a routerLink=""  [routerLinkActiveOptions]="{exact:true}"  [routerLinkActive]="'active'">Home</a></div>
-        <div class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="/about" [routerLinkActive]="'active'" >About</a></div>
-        <div class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="/product" [routerLinkActive]="'active'">Product</a></div>
-        <div class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="/contact" [routerLinkActive]="'active'">Contact</a></div>
-</div>
+        <div  class="w-full bg-gray-500 hover:bg-gray-400 ps-4 " (click)="changetogglestate()"><a routerLink=""  [routerLinkActiveOptions]="{exact:true}"  [routerLinkActive]="'active'">Home</a></div>
+        <div *ngIf="!isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="/about" [routerLinkActive]="'active'" >About</a></div>
+        <div *ngIf="!isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="/product" [routerLinkActive]="'active'">Product</a></div>
+        <div *ngIf="!isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="/contact" [routerLinkActive]="'active'">Contact</a></div>
+        
+        
+        <div *ngIf="isloggedin" class="w-full flex gap-2 bg-gray-500 ps-4" (click)="changetogglestate()"><fa-icon [icon]="faprofile"></fa-icon><button>{{username}}</button></div>
+        <div *ngIf="isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="order" [routerLinkActive]="'active'">My Orders</a></div>
+        <div *ngIf="isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="cart" [routerLinkActive]="'active'">My Carts</a></div>
+        <div *ngIf="isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><button (click)="logoutuser()">Logout</button></div>
+    </div>
