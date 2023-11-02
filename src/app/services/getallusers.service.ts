@@ -22,9 +22,7 @@ export class GetallUsersService {
     return this.http.get(`http://localhost:3000/users/${userid}`)
   }
 
-  addcarttouserbyid(userid:number, productid:number): Observable<any>{
-    return this.http.put(`http://localhost:3000/users/${userid}`,productid)
-  }
+
   
 
   

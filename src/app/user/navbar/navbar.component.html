@@ -9,7 +9,7 @@
             <div *ngIf="!isloggedin"><a routerLink="product" [routerLinkActive]="'active'">Product</a></div>
             <div *ngIf="!isloggedin"><a routerLink="contact" [routerLinkActive]="'active'">Contact</a></div>
         
-            <div *ngIf="isloggedin"><a routerLink="mycart" [routerLinkActive]="'active'">My Carts</a></div>
+            <div *ngIf="isloggedin"><a routerLink="mycart" [routerLinkActive]="'active'">My Carts<sup class="text-red-600 font-extrabold">{{cartnumber}}</sup></a></div>
                 <div *ngIf="isloggedin"><a routerLink="order" [routerLinkActive]="'active'">My Orders</a></div>
                 <div *ngIf="isloggedin" class="flex gap-2"> <fa-icon [icon]="faprofile"></fa-icon><span class=" text-red-600 font-bold">{{username}}</span></div>
                 <div *ngIf="isloggedin" ><fa-icon [icon]="falogout" (click)="logoutuser()" ></fa-icon></div>

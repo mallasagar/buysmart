@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductlistService } from 'src/app/services/productlist.service';
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
+import { HttpClient } from '@angular/common/http';
 // import { MatCommonModule } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateProductService } from 'src/app/services/updateproduct.service';
@@ -19,8 +20,9 @@ export class HomeComponent implements OnInit {
   product:any;
   objectarray:any[]
   productid:number;
+  userid:number=Number(sessionStorage.getItem('id'));
   productbyid:any;
-  productForm:FormGroup;
+  orderForm:FormGroup;
 
   constructor(
               private toast: ToastrService, 
@@ -29,15 +31,19 @@ export class HomeComponent implements OnInit {
               private UpdateProductService: UpdateProductService,
               private getusers:GetallUsersService,
               private router:Router,
+              private http: HttpClient
               ) {
   }
 
+  
+  
+  ngOnInit():void {    
+   this.fetchproduct()
+  
+  }
 
- 
-  ngOnInit(){
-    this.productForm= new FormGroup({
-    userorder:new FormControl(this.productid)})
-    // fetch all products
+
+  fetchproduct(){
     this.product=this.productservice.productlist().subscribe((product)=>{
       if(product){
         this.product=product;
@@ -45,29 +51,28 @@ export class HomeComponent implements OnInit {
         this.objectarray=Object.values(this.product)
       }
     })
-
-
   }
+
   addtocart(productid:number){
-      this.productid = productid
+      this.productid = Number(productid)
         const isloggedin=sessionStorage.getItem('Loggedin');
-        const userid=Number(sessionStorage.getItem('id'));
+        this.userid=Number(sessionStorage.getItem('id'));
    if(!isloggedin){
     this.toast.success("Signin First")
     this.router.navigate(['/login']);
    }else{
-    // sending product id to cart component.
-        this.getusers.addcarttouserbyid(userid,this.productForm.value ).subscribe((users)=>{
-          if(users){
-            console.log(users)
-            this.toast.success("Product hav been added to your wishlist.")
-          }
-        })
+    this.orderForm= new FormGroup(
+      {
+        productid:new FormControl(this.productid),
+        userid:new FormControl(this.userid)
+      });
+        this.addcarttouserbyid()
+       
        }
   }
 
-  getproductbyid(productid:number){
-    this.productid=productid
+  getproductbyid(productid){
+    this.productid=Number(productid)
     this.productbyid=this.UpdateProductService.productupdate(this.productid).subscribe((product)=>{
       if(product){
         this.productbyid=product
@@ -96,4 +101,18 @@ export class HomeComponent implements OnInit {
        }
      })
    }
+
+
+  addcarttouserbyid(){
+    this.http.post('http://localhost:3000/orders',this.orderForm.value)
+      .subscribe((order)=>{
+        if(order){
+          this.toast.success('Product added successfully.');
+        }
+  })
+  }
+ 
+
+ 
+
 }

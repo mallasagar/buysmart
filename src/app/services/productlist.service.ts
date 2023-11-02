@@ -8,6 +8,7 @@ export class ProductlistService {
   constructor(private http:HttpClient,private toast: ToastrService) { }
   productdata:any;
   producttocart:number;
+  order:number;
   productlist(){
      return this.http.get('http://localhost:3000/products/')
   }
@@ -15,4 +16,6 @@ export class ProductlistService {
   addproducttocartbyid(productid:number){
     this.producttocart=productid
   }
+
+  
 }

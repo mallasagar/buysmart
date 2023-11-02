@@ -47,6 +47,19 @@
       "userrole": "user",
       "userpassword": "sadhana",
       "id": 5
+    },
+    {
+      "personaldetail": {
+        "username": "sagar malla",
+        "useraddress": "imadol lalitpur",
+        "usercontact": 9812232233,
+        "usergender": "male"
+      },
+      "useremail": "sagar@gmail.com",
+      "userrole": "user",
+      "userpassword": "sagar",
+      "userorder": null,
+      "id": 7
     }
   ],
   "images": [],
@@ -202,12 +215,21 @@
       "id": 16
     }
   ],
-  "upload": [
+  "orders": [
     {
+      "productid": 6,
+      "userid": 7,
       "id": 1
     },
     {
+      "productid": 10,
+      "userid": 7,
       "id": 2
+    },
+    {
+      "productid": 13,
+      "userid": 7,
+      "id": 3
     }
   ]
 }

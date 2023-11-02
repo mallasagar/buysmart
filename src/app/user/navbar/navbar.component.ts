@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faBars,faXmark, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { GetallUsersService } from 'src/app/services/getallusers.service';
+import { ProductlistService } from 'src/app/services/productlist.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,12 +22,16 @@ export class NavbarComponent implements OnInit{
   menu:boolean = true;
   userinfo:any;
   userdata:any;
-  username:string=null;;
+  username:string=null;
+  cartnumber:number;
+  order:number;
 
   
-constructor(private userbyid:GetallUsersService ){}
+constructor(private userbyid:GetallUsersService, private orderNumber:ProductlistService ){}
 
   ngOnInit(): void {
+    this.order=Number(sessionStorage.getItem('order'));
+    this.cartnumber=this.order
    this.isloggedin=Boolean(sessionStorage.getItem('userrole'));
    this.userid=Number(sessionStorage.getItem('id'));
     this.userdata=this.userbyid.getuserbyid(this.userid).subscribe((users)=>{
