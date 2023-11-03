@@ -6,13 +6,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GetorderbyidService {
-  private apiUrl='http://localhost:3000/products'
+  cartnumber:number;
+
   constructor(private http:HttpClient){}
 
-  getDataByIds(ids: number[]): Observable<any[]> {
-    // Send a GET request to the API endpoint with IDs as query parameters
-    const params = { ids: ids.join(',') }; // Convert the array to a comma-separated string
-    return this.http.get<any[]>(`${this.apiUrl}/data`, { params });
+ 
+
+  ordercount = (number:string) => {
+    this.cartnumber =Number(number )
   }
+
+
+deleterorder(orderid:number) {
+  return this.http.delete(`http://localhost:3000/orders/${orderid}`)
+}
 
 }

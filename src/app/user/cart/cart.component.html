@@ -1,9 +1,10 @@
 <div class="flex  justify-center text-center w-full h-auto  mb-12 ">
     <table  class=" w-8/12 h-auto" >
         <caption class="caption-top my-7">
-          List of    <fa-icon [icon]="facart"></fa-icon>
+          List of   <fa-icon [icon]="facart"></fa-icon>items is : 
+          <span class="ms-2 text-red-400 font-bold">{{ordernumber}} </span>
           </caption>
-        <thead class="bg-slate-400  ">
+        <thead class="bg-slate-500  ">
             <tr>
                 <td>Product Name</td>
                 <td>Image</td>
@@ -19,14 +20,15 @@
                 <td><img src={{item.productpic}} class="h-20 w-27 align-middle"></td>
                 <td>{{item.productbrand}}</td>
                 <td>${{item.productprice}}</td> 
-                <td ><span class="text-red-500 font-bold me-2 shadow-xl  hover:opacity-30">Delete</span><span class="text-green-400 shadow-md font-bold hover:text-green-600">Buy</span></td>
+                <td ><span class="text-red-500 font-bold me-2 shadow-xl  hover:opacity-30" (click)="deletecart(item.id)">Delete</span><span class="text-green-400 shadow-md font-bold hover:text-green-600">Buy</span></td>
             </tr>
-        </tbody>
-        <tfoot>
-            <tr><td><span>Amount:</span></td>           </tr>
-            <tr><td><span>with Vat 13%:</span></td>           </tr>
-            <tr><td><span>Total Amount:</span></td>           </tr>
-            <tr><td><span>BuyALL:</span></td>           </tr>
+        </tbody><br>
+        <tfoot >
+            
+            <tr><td><span>Amount:</span></td> </tr>
+            <tr><td><span>with Vat 13%:</span></td> </tr>
+            <tr><td><span>Total Amount:</span></td> </tr>
+            <tr><td><span>BuyALL:</span></td> </tr>
         </tfoot>
     </table>
 </div>

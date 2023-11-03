@@ -6,6 +6,7 @@ import { UpdateProductService } from 'src/app/services/updateproduct.service';
 import { forkJoin } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
+import { GetorderbyidService } from 'src/app/services/getorderbyid.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,19 +15,20 @@ import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 })
 export class CartComponent {
   
-  constructor(private productservice: ProductlistService,private toast: ToastrService , private http:HttpClient,
+  constructor(private productservice: ProductlistService,
+    private orderservice:GetorderbyidService, private toast: ToastrService , private http:HttpClient,
     private getproductbyid:UpdateProductService){}
     
     productid:any[] ;
+    orderprice:any[];
     userid:number;
+    cartid:any;
+    CartId:number;
     cart:any;
     facart=faCartShopping;
     ordernumber:string;
     cartproduct:any;
-    product:any ;
-    productlist:any[];
     objectarray :any;
-    filteredData: any[];
     data: any[] = [];
 
   ngOnInit(){
@@ -40,10 +42,7 @@ export class CartComponent {
       switchMap((cartItems) => {
         this.cart = cartItems.filter((cartItem) => cartItem.userid === this.userid);
         this.productid = this.cart.map((cart) => cart.productid);
-        this.ordernumber=String(this.productid.length);
-        sessionStorage.setItem('order', this.ordernumber);
-        // sending order number to service
-       
+        this.ordernumber=String(this.productid.length);    
         const requests = this.productid.map(productId => this.getproductbyid.productupdate(productId));
         return forkJoin(requests);
       })
@@ -52,11 +51,29 @@ export class CartComponent {
       // cartProducts is an array containing the results of individual product update requests
       this.cartproduct = cartProducts;
       this.objectarray=Object.values(this.cartproduct);
-    });
+    })
   }
+  
 
+  deletecart(cartId:string){
+    // console.log(cartId)
+    this.CartId=Number(cartId);
+    this.http.get<any>("http://localhost:3000/orders")
+          .subscribe((data) =>
+            this.cartid=data.find(
+            (a:any)=>{        
+              if(a.productid===this.CartId){
+                this.orderservice.deleterorder(a.id)
+                  .subscribe((data) => {
+                    if(data){
+                      this.toast.success("Cartdeleted successfully!");
+                    }
+                  })
+               }
+            })
+            )
 }
-    
+}   
  
         
   

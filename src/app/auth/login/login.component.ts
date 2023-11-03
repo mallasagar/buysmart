@@ -4,7 +4,6 @@ import { HttpClient} from '@angular/common/http';
 import { authenticationService  } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { LocalStorage } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-login',
