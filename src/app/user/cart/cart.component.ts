@@ -21,8 +21,9 @@ export class CartComponent {
     
     productid:any[] ;
     orderprice:any[];
+  
     userid:number;
-    cartid:any;
+    cartid:any[];
     CartId:number;
     cart:any;
     facart=faCartShopping;
@@ -34,6 +35,7 @@ export class CartComponent {
   ngOnInit(){
     this.userid=Number(sessionStorage.getItem('id'));
     this.getcart();
+    
   }
   // getting an idthat match userid then get productid that matched userid
   getcart(){
@@ -42,7 +44,8 @@ export class CartComponent {
       switchMap((cartItems) => {
         this.cart = cartItems.filter((cartItem) => cartItem.userid === this.userid);
         this.productid = this.cart.map((cart) => cart.productid);
-        this.ordernumber=String(this.productid.length);    
+        this.ordernumber=String(this.productid.length);  
+        // this.cartid.push(this.productid);
         const requests = this.productid.map(productId => this.getproductbyid.productupdate(productId));
         return forkJoin(requests);
       })
@@ -51,9 +54,9 @@ export class CartComponent {
       // cartProducts is an array containing the results of individual product update requests
       this.cartproduct = cartProducts;
       this.objectarray=Object.values(this.cartproduct);
-    })
+    }) 
   }
-  
+   
 
   deletecart(cartId:string){
     // console.log(cartId)
@@ -73,6 +76,10 @@ export class CartComponent {
             })
             )
 }
+
+
+
+
 }   
  
         

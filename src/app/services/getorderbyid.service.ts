@@ -18,7 +18,7 @@ export class GetorderbyidService {
 
 
 deleterorder(orderid:number) {
-  return this.http.delete(`http://localhost:3000/orders/${orderid}`)
+  return this.http.delete(`http://localhost:3000/carts/${orderid}`)
 }
 
 }

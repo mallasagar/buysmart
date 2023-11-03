@@ -30,7 +30,8 @@ import { UserlistComponent } from './admin/component/userlist/userlist.component
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDialogModule } from '@angular/material/dialog';
 import { UpdateproductComponent } from './admin/component/editproduct/updateproduct/updateproduct.component';
-import { CartComponent } from './user/cart/cart.component'
+import { CartComponent } from './user/cart/cart.component';
+import { ProfileComponent } from './pages/profile/profile.component'
 // import {NgxWebstorageModule} from 'ngx-webstorage';
 
 const route:Routes =[
@@ -68,7 +69,8 @@ const route:Routes =[
     UserlistComponent,
     HomeComponent,
     UpdateproductComponent,
-    CartComponent
+    CartComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
