@@ -20,15 +20,17 @@
                 <td><img src={{item.productpic}} class="h-20 w-27 align-middle"></td>
                 <td>{{item.productbrand}}</td>
                 <td>${{item.productprice}}</td> 
-                <td ><span class="text-red-500 font-bold me-2 shadow-xl  hover:opacity-30" (click)="deletecart(item.id)">Delete</span><span class="text-green-400 shadow-md font-bold hover:text-green-600">Buy</span></td>
+                <td ><span class="text-red-500 font-bold me-2 shadow-xl  hover:opacity-30" (click)="deletecart(item.id)">Delete</span><span class="text-green-400 shadow-md font-bold hover:text-green-600" (click)="buycart(item.id)">Buy</span></td>
             </tr>
         </tbody><br>
         <tfoot >
             
-            <tr><td><span>Amount:</span></td> </tr>
-            <tr><td><span>with Vat 13%:</span></td> </tr>
-            <tr><td><span>Total Amount:</span></td> </tr>
-            <tr><td><span>BuyALL:</span></td> </tr>
+            <tr><td></td><td></td><td><p >Amount:<span class=" me-4 text-green-500 font-bold">{{totalsum}}</span></p></td> </tr>
+            <tr><td></td><td></td><td><p >VAT 13%:<span class=" me-4 text-green-500 font-bold">{{withvat|number:'1.0-0'}}</span></p></td> </tr>
+            <tr><td></td><td></td><td><p >Grand Total:<span class=" me-4 text-green-500 font-bold">{{grandtotal|number:'1.0-0'}}</span></p></td> </tr>
+            <tr><td></td><td></td><td>  <button class=" bg-green-500 px-4 py-2 font-bold rounded-xl text-black">BUY ALL</button></td> </tr>
+           
+          
         </tfoot>
     </table>
 </div>

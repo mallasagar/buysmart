@@ -1,0 +1,49 @@
+    <mat-dialog-content class="bg-white">
+        <button class="inline-block float-right text-red-500" mat-dialog-close="close">X</button>
+
+        <h1 class="text-green-600 ">Confirm Order</h1>
+        <form class="text-black"  [formGroup]="productForm" (ngSubmit)='orderproduct()'>
+            <div class="flex flex-col gap-2 items-center">
+
+                <img class=" h-50 w-40 self-center" src="{{productimg}}" alt="{{productname}} img" >
+                <h1 class="self-center">{{productname}}
+                    <input type="text" formControlName="productname">
+                </h1>
+                <p >Brand : {{productbrand}}</p>
+                <div>
+                    <input type="number" class="border " placeholder="Order" formControlName="quantity" >                   
+                    <div class="flex flex-row gap-2">
+                        <input  type="checkbox"id="redcolor" formControlName="colorred" *ngIf="redcolor"/>
+                        <label for="redcolor" *ngIf="redcolor">Red</label>
+                        <input  type="checkbox"id="blackcolor" formControlName="colorblack" *ngIf="blackcolor"/>
+                        <label for="blackcolor" *ngIf="blackcolor">Black</label>
+                        <input  type="checkbox"id="bluecolor" formControlName="colorblue" *ngIf="bluecolor"/>
+                        <label for="bluecolor" *ngIf="bluecolor">Blue</label>
+                        <input  type="checkbox"id="whitecolor"formControlName="colorwhite" *ngIf="whitecolor"/>
+                        <label for="whitecolor" *ngIf="whitecolor">White</label>
+                    </div>
+                </div>
+                <div class="flex-col items-start">
+                    <label>Contact Number:</label>
+                    <input type="number" formControlName="contactnumber" placeholder="Contact Number">
+                </div>
+                <div class="flex-col ">
+                    <label>Delivery Address:</label>
+                    <input type="string" formControlName="deliveryaddress" placeholder="Delivery address">
+
+                </div>
+                
+                    
+                <div class="flex flex-col items-start mt-4">
+                    
+                    <!-- <input type="file" (change)="getFile($event)"> -->
+                    Price : {{productprice}}<br>
+                    Withvat : 13% is {{withvat}}<br>
+                    Delivery Charge : 150<br>
+                    <p class="text-green-500">Total : {{producttotal}}</p>
+                </div>
+                
+            </div>
+            <input type="submit" value=" Confirm Order" class="mt-4 p-2 self-center bg-green-400 rounded-lg shadow-inner " mat-dialog-close="close">
+</form>
+    </mat-dialog-content>

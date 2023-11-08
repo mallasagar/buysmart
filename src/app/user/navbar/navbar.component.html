@@ -10,7 +10,7 @@
             <div *ngIf="!isloggedin"><a routerLink="contact" [routerLinkActive]="'active'">Contact</a></div>
         
             <div *ngIf="isloggedin"><a routerLink="mycart" [routerLinkActive]="'active'">My Carts</a></div>
-                <div *ngIf="isloggedin"><a routerLink="order" [routerLinkActive]="'active'">My Orders</a></div>
+                <div *ngIf="isloggedin"><a routerLink="myorders" [routerLinkActive]="'active'">My Orders</a></div>
                 <div *ngIf="isloggedin" class="flex gap-2" (click)="openprofile()"> <fa-icon [icon]="faprofile" ></fa-icon><span class=" text-red-600 font-bold">{{username}}</span></div>
                 <div *ngIf="isloggedin" ><fa-icon [icon]="falogout" (click)="logoutuser()" ></fa-icon></div>
     </div>
@@ -26,7 +26,7 @@
         
         
         <div *ngIf="isloggedin" class="w-full flex gap-2 bg-gray-500 ps-4" (click)="changetogglestate()"><fa-icon [icon]="faprofile"></fa-icon><button>{{username}}</button></div>
-        <div *ngIf="isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="order" [routerLinkActive]="'active'">My Orders</a></div>
-        <div *ngIf="isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="cart" [routerLinkActive]="'active'">My Carts</a></div>
+        <div *ngIf="isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="myorders" [routerLinkActive]="'active'">My Orders</a></div>
+        <div *ngIf="isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><a routerLink="mycart" [routerLinkActive]="'active'">My Carts</a></div>
         <div *ngIf="isloggedin" class="w-full bg-gray-500 ps-4" (click)="changetogglestate()"><button (click)="logoutuser()">Logout</button></div>
     </div>

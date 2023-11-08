@@ -32,9 +32,6 @@ ngOnInit(): void {
     productprice:new FormControl(null, [Validators.min(0),Validators.max(10000)]),
   })
 }
-
-  
-    
     addProduct(){
       if(this.productForm.valid){
         this.createproductservice.createProduct(this.productForm)

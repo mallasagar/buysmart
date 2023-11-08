@@ -31,7 +31,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDialogModule } from '@angular/material/dialog';
 import { UpdateproductComponent } from './admin/component/editproduct/updateproduct/updateproduct.component';
 import { CartComponent } from './user/cart/cart.component';
-import { ProfileComponent } from './pages/profile/profile.component'
+import { ProfileComponent } from './pages/profile/profile.component';
+import { OrderComponent } from './user/order/order.component';
+import { ConfirmorderComponent } from './user/confirmorder/confirmorder.component'
+import { OrderadminComponent } from './admin/component/order/order.component';
 // import {NgxWebstorageModule} from 'ngx-webstorage';
 
 const route:Routes =[
@@ -42,6 +45,7 @@ const route:Routes =[
   {path: 'product', component:DetailComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
+  {path:'myorders', component:ConfirmorderComponent},
   {path:'mycart', component:CartComponent},
   {path:'**', component:ErrorComponent},
 ];
@@ -70,7 +74,10 @@ const route:Routes =[
     HomeComponent,
     UpdateproductComponent,
     CartComponent,
-    ProfileComponent
+    ProfileComponent,
+    OrderComponent,
+    ConfirmorderComponent,
+    OrderadminComponent
   ],
   imports: [
     BrowserModule,

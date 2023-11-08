@@ -10,6 +10,7 @@ import { DetailComponent } from '../detail/detail.component';
 import { Router } from '@angular/router';
 import { GetallUsersService } from 'src/app/services/getallusers.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { OrderComponent } from 'src/app/user/order/order.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
   userid:number=Number(sessionStorage.getItem('id'));
   productbyid:any;
   orderForm:FormGroup;
+  buyproductid:number;
 
   constructor(
               private toast: ToastrService, 
@@ -31,7 +33,8 @@ export class HomeComponent implements OnInit {
               private UpdateProductService: UpdateProductService,
               private getusers:GetallUsersService,
               private router:Router,
-              private http: HttpClient
+              private http: HttpClient,
+              private matdialogue:MatDialog
               ) {
   }
 
@@ -112,6 +115,22 @@ export class HomeComponent implements OnInit {
   })
   }
  
+  buyproductbyid(productid:number){
+    this.buyproductid=productid;
+    const isloggedin=sessionStorage.getItem('Loggedin');
+    if(!isloggedin) {
+      this.toast.success("Signin First")
+      this.router.navigate(['/login']);
+    }else{
+      this.matdialogue.open(OrderComponent,{
+        width:"600px",
+        data:{
+          productid:this.buyproductid,
+          userid:this.userid
+        }
+      })
+    }
+  }
 
  
 

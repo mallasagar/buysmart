@@ -1,0 +1,78 @@
+<div class="flex  justify-center text-center w-full h-auto  mb-12 ">
+    <table  class=" w-11/12 h-auto" >
+        <caption class="caption-top my-7">
+          My Orders
+          <span class="ms-2 text-red-400 font-bold"> </span>
+          </caption>
+        <thead class="bg-slate-500  text-start  ">
+            <tr>
+                <td>Image</td>
+                <td>Product Details</td>
+                <td>Amount</td>
+                <td>Contact</td>
+                <td>Status </td>
+            </tr>
+        </thead>
+        <tbody  class="text-start">      
+                <tr *ngFor="let item of confirmdata "  class=" border-2  text-sm border-gray-100 w-full rounded-lg">
+                    <td><img src={{item.productimg}} class="h-12 w-15 align-middle"></td>
+                         <td>{{item.productname}}
+                        <br>Brand:{{item.productbrand}}
+                        <br>Quantity:{{item.quantity}}
+                        <br>
+                        <span >Color:
+                            <span *ngIf="item.colorwhite">White</span>
+                            <span *ngIf="item.colorblack">Black</span>
+                            <span *ngIf="item.colorred">Red</span>
+                            <span *ngIf="item.colorblue">Blue</span>
+                        </span>
+                    </td>
+                <td>
+                    price:
+                    <span class="text-green-500">
+                        ${{item.productprice}}
+                    </span><br>
+                    with 13% Vat :
+                    <span class="text-green-500">
+                        ${{item.vat}}
+                    </span>
+                    <br>
+                    Delevery Fee:
+                    <span class="text-green-500">
+                        ${{item.deliveryfee}}
+                    </span><br>
+                    Total Amount:
+                    <span class="text-green-500">
+                        ${{item.grandtotal}}
+                    </span><br>
+                 </td>  
+                 <td>
+                    Contact:
+                    <span class="text-green-500">
+                        {{item.contactnumber}}
+                    </span>
+                    <br>
+                    Address:
+                    <span class="text-green-500">
+                        {{item.deliveryaddress}}
+                    </span>
+                 </td>
+                <td  [ngSwitch]="item.orderstatus">
+                    <span  *ngSwitchCase="'request'" class="text-red-500 font-bold me-2 shadow-xl  hover:opacity-30">Request</span>
+                    <span  *ngSwitchCase="'processing'" class="text-green-500 font-bold me-2 shadow-xl  hover:opacity-30" >Processing</span>
+                    <span  *ngSwitchCase="'Delivered'" class="text-blue-500 font-bold me-2 shadow-xl  hover:opacity-30" >Delivered</span>
+                    <!-- <div [ngSwitch]="item.request">
+                        <span  *ngSwitchCase="true" class="text-green-500 font-bold me-2 shadow-xl  hover:opacity-30" >Delivered</span>
+                        <span  *ngSwitchDefault class="text-green-500 font-bold me-2 shadow-xl  hover:opacity-30" >Processing</span> -->
+                    <!-- </div> --> 
+                </td>
+
+              
+            </tr>
+        </tbody><br>
+        <caption class="caption-bottom mt-7 mb-2">
+            Notice:
+            <span class="ms-2 text-red-400 font-bold">you will receive your ordered products within 3 business days after an confirmation call is approved. </span>
+            </caption>       
+    </table>
+</div>

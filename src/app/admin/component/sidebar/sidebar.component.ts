@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faDashboard, faGear,faTrash , faBox, faList} from '@fortawesome/free-solid-svg-icons';
+import { faDashboard,faTruckFast ,faGear,faTrash , faBox, faList} from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
@@ -17,6 +17,7 @@ export class SidebarComponent {
   
   faproduct=faBox
   falist=faList
+  fatruck=faTruckFast
 
 
 

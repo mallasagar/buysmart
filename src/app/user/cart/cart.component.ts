@@ -7,6 +7,8 @@ import { forkJoin } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { GetorderbyidService } from 'src/app/services/getorderbyid.service';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderComponent } from '../order/order.component';
 
 @Component({
   selector: 'app-cart',
@@ -17,11 +19,19 @@ export class CartComponent {
   
   constructor(private productservice: ProductlistService,
     private orderservice:GetorderbyidService, private toast: ToastrService , private http:HttpClient,
-    private getproductbyid:UpdateProductService){}
+    private getproductbyid:UpdateProductService,
+    private matdialogue:MatDialog){}
     
     productid:any[] ;
     orderprice:any[];
-  
+    totalsum:number;
+    buyproductid:number;
+    sum:number=0;
+    vat:number=0.13;
+    withvat:number;
+    grandtotal:number;
+    initialsum:number=0;
+    cartsum:number;
     userid:number;
     cartid:any[];
     CartId:number;
@@ -35,7 +45,6 @@ export class CartComponent {
   ngOnInit(){
     this.userid=Number(sessionStorage.getItem('id'));
     this.getcart();
-    
   }
   // getting an idthat match userid then get productid that matched userid
   getcart(){
@@ -54,10 +63,27 @@ export class CartComponent {
       // cartProducts is an array containing the results of individual product update requests
       this.cartproduct = cartProducts;
       this.objectarray=Object.values(this.cartproduct);
+       for (let i = 0; i < this.objectarray.length; i++) {
+        const checksum = this.objectarray[i].productprice;
+        const sum=this.initialsum+checksum;
+        this.initialsum=sum;
+      }
+      this.totalsum=this.initialsum;
+      this.withvat=this.vat*this.totalsum;
+      this.grandtotal=Math.abs(this.totalsum+this.withvat);
     }) 
   }
-   
 
+  buycart(productid:number){
+    this.buyproductid=productid;
+    this.matdialogue.open(OrderComponent,{
+      width:"600px",
+      data:{
+        productid:this.buyproductid,
+        userid:this.userid,
+      }
+    })
+  }
   deletecart(cartId:string){
     // console.log(cartId)
     this.CartId=Number(cartId);
@@ -75,9 +101,7 @@ export class CartComponent {
                }
             })
             )
-}
-
-
+        }
 
 
 }   

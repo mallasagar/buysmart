@@ -10,26 +10,26 @@
             </div>
             <div class="flex flex-row items-baseline  w-full gap-2 justify-start hover:opacity-60">
                 <fa-icon [icon]="faproduct"></fa-icon>
-                <a routerLink="/admin/addproduct">
+                <a routerLink="/admin/addproduct" [routerLinkActive]="'active'"> 
                     <h3>Add Product</h3>
                 </a>
             </div>
             <div class="flex flex-row items-baseline  w-full gap-2 justify-start hover:opacity-60">
                 <fa-icon [icon]="fasetting"></fa-icon>
-                <a routerLink="/admin/editproduct">
+                <a routerLink="/admin/editproduct" [routerLinkActive]="'active'">
                     <h3>Edit Product</h3>
                 </a>
             </div>
             <div class="flex flex-row items-baseline  w-full gap-2 justify-start hover:opacity-60">
                 <fa-icon [icon]="falist"></fa-icon>
-                <a routerLink="/admin/userlist">
+                <a routerLink="/admin/userlist" [routerLinkActive]="'active'">
                     <h3>Users List</h3>
                 </a>
             </div>
             <div class="flex flex-row items-baseline  w-full gap-2 justify-start hover:opacity-60">
-                <fa-icon ></fa-icon>
-                <a routerLink="/admin/deleteproduct">
-                    <h3>Delete Product</h3>
+                <fa-icon [icon]="fatruck"></fa-icon>
+                <a routerLink="/admin/order" [routerLinkActive]="'active'">
+                    <h3>Order</h3>
                 </a>
             </div>
             

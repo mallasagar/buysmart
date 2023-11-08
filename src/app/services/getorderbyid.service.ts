@@ -11,14 +11,27 @@ export class GetorderbyidService {
   constructor(private http:HttpClient){}
 
  
-
-  ordercount = (number:string) => {
+ordercount = (number:string) => {
     this.cartnumber =Number(number )
   }
 
+confirmorder(order:any){
+  return this.http.post("http://localhost:3000/confirmorders", order.value)
+
+}
+getconfirmorder(){
+  return this.http.get("http://localhost:3000/confirmorders")
+}
+updateconfirmorder(id:number,value:any){
+  return this.http.put(`http://localhost:3000/confirmorders/${id}`,value.value)
+}
 
 deleterorder(orderid:number) {
-  return this.http.delete(`http://localhost:3000/carts/${orderid}`)
+  return this.http.delete(`http://localhost:3000/orders/${orderid}`)
+}
+
+getorder(){
+  return this.http.get("http://localhost:3000/orders")
 }
 
 }
