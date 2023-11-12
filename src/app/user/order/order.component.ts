@@ -5,6 +5,7 @@ import { UpdateProductService } from 'src/app/services/updateproduct.service';
 import { FormGroup,FormControl, Validators} from '@angular/forms';
 import { GetorderbyidService } from 'src/app/services/getorderbyid.service';
 import { ToastrService } from 'ngx-toastr';
+import { GetallUsersService } from 'src/app/services/getallusers.service';
 
 @Component({
   selector: 'app-order',
@@ -13,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OrderComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private userservice:GetallUsersService,
   private toast:ToastrService, private productservice :UpdateProductService, private order:GetorderbyidService ){}
 
   userid:number;
@@ -36,10 +37,10 @@ export class OrderComponent {
   deliveryaddress:string;
   orderstatus:string;
   username:string;
-
+  contact:string;
 
   ngOnInit() {
-    this.userid = this.data.userid;
+    this.userid = Number(sessionStorage.getItem('id'));
     this.productid = this.data.productid;
     
    
@@ -67,10 +68,22 @@ export class OrderComponent {
   })
   }
 
+  getusername(){
+    this.userservice.getuserbyid(this.userid)
+    .subscribe((data:any)=>{
+      if(data){
+          this.username=data.personaldetail.username;
+           this.contact=data.personaldetail.usercontact;
+      }
+    })
+
+  }
+  
   getproduct(productid:number){
+    this.getusername()
           this.productservice.productupdate(productid)
                 .subscribe((data) =>{
-                  console.log(data);
+                  // console.log(data);
                 if(data){
                   this.productdata=data;
                   this.productname=this.productdata.productname;
@@ -85,7 +98,7 @@ export class OrderComponent {
                   this.bluecolor=this.productdata.colorblue;
                   this.whitecolor=this.productdata.colorwhite;
                   this.productprice=this.productdata.productprice;
-                  
+                                
                   this.productForm=new FormGroup({
                     productname: new FormControl(this.productname,),
                     productbrand:new FormControl(this.productbrand),
@@ -105,7 +118,7 @@ export class OrderComponent {
                     processing:new FormControl(false),
                     deliveryaddress:new FormControl(null,[Validators.required, Validators.maxLength(50)]),
                    
-                    contactnumber:new FormControl(null, [Validators.required,Validators.pattern(/^\d{10}$/)]),
+                    contactnumber:new FormControl(this.contact),
                     productprice:new FormControl(this.productprice),
                     orderstatus:new FormControl("processing")
                    })
@@ -136,9 +149,5 @@ export class OrderComponent {
           })        
         })
       }
-
-
-
-
  
 }

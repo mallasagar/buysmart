@@ -51,6 +51,7 @@ export class CartComponent {
     this.http.get<any>("http://localhost:3000/orders")
     .pipe(
       switchMap((cartItems) => {
+        // console.log(cartItems)
         this.cart = cartItems.filter((cartItem) => cartItem.userid === this.userid);
         this.productid = this.cart.map((cart) => cart.productid);
         this.ordernumber=String(this.productid.length);  

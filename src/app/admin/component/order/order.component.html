@@ -51,17 +51,17 @@
         </div>
         </div> -->
     
-        <div class="flex   flex-col-reverse px-2 py-4 items-center text-center gap-2 w-11/12 h-auto">
+        <div class="flex   flex-col-reverse px-2 py-4 items-center justify-center text-center gap-2 w-full h-auto">
          
             
             <div *ngFor="let item of confirmdata" class="flex  align-middle items-center w-full border-2 text-sm border-gray-100 rounded-lg">
               <form [formGroup]="productForm" (ngSubmit)="changestatus(item.id)" class="flex w-full justify-start m-2">
           
                 <img [src]="item.productimg" class="h-15 w-20 align-middle ">
-                <div class="flex flex-col gap-2 items-start w-6/12 text-start">
+                <div class="flex flex-col gap-2 items-start w-8/12 text-start">
                   <h2>{{ item.productname }}</h2>
                   <div class="flex gap-4">
-                    <span>Name: {{ item.name }}</span>
+                    <span>Name: {{ item.username }}</span>
                     <span>Brand: {{ item.productbrand }}</span>
                     <span>Quantity: {{ item.quantity }}</span>
                     <span>Color:
@@ -78,7 +78,7 @@
                   </div>
                 
                   </div>
-                <div class="w-3/12 flex items-center justify-between me-4">
+                <div class="w-3/12 flex gap-2 items-center justify-start ">
                   <label>Order Status:{{item.orderstatus}}</label>
                       
                   <input type="submit" value="Delivered"  class="mt-4 p-2 bg-green-400 rounded-lg shadow-inner">

@@ -15,9 +15,10 @@
         </thead>
         <tbody  class="text-start">      
                 <tr *ngFor="let item of confirmdata "  class=" border-2  text-sm border-gray-100 w-full rounded-lg">
-                    <td><img src={{item.productimg}} class="h-12 w-15 align-middle"></td>
-                         <td>{{item.productname}}
-                        <br>Brand:{{item.productbrand}}
+                    
+                        <td><img src={{item.productimg}} class="h-12 w-15 align-middle"></td>
+                        <td>{{item.productname}}
+                            <br>Brand:{{item.productbrand}}
                         <br>Quantity:{{item.quantity}}
                         <br>
                         <span >Color:
@@ -56,23 +57,17 @@
                     <span class="text-green-500">
                         {{item.deliveryaddress}}
                     </span>
-                 </td>
+                </td>
                 <td  [ngSwitch]="item.orderstatus">
                     <span  *ngSwitchCase="'request'" class="text-red-500 font-bold me-2 shadow-xl  hover:opacity-30">Request</span>
                     <span  *ngSwitchCase="'processing'" class="text-green-500 font-bold me-2 shadow-xl  hover:opacity-30" >Processing</span>
                     <span  *ngSwitchCase="'Delivered'" class="text-blue-500 font-bold me-2 shadow-xl  hover:opacity-30" >Delivered</span>
-                    <!-- <div [ngSwitch]="item.request">
-                        <span  *ngSwitchCase="true" class="text-green-500 font-bold me-2 shadow-xl  hover:opacity-30" >Delivered</span>
-                        <span  *ngSwitchDefault class="text-green-500 font-bold me-2 shadow-xl  hover:opacity-30" >Processing</span> -->
-                    <!-- </div> --> 
                 </td>
-
-              
             </tr>
         </tbody><br>
         <caption class="caption-bottom mt-7 mb-2">
             Notice:
             <span class="ms-2 text-red-400 font-bold">you will receive your ordered products within 3 business days after an confirmation call is approved. </span>
-            </caption>       
+        </caption>       
     </table>
 </div>

@@ -34,8 +34,6 @@ export class NavbarComponent implements OnInit{
 constructor(private userbyid:GetallUsersService, private orderservice:GetorderbyidService, private matdialog: MatDialog, ){}
 
   ngOnInit(): void {
-    // this.order=Number(sessionStorage.getItem('order'));
-    // this.cartnumber=this.order;
    this.isloggedin=Boolean(sessionStorage.getItem('userrole'));
    this.userid=Number(sessionStorage.getItem('id'));
     this.userbyid.getuserbyid(this.userid).subscribe((users)=>{
@@ -60,7 +58,6 @@ constructor(private userbyid:GetallUsersService, private orderservice:Getorderby
   }
 
   openprofile(){
-    
       this.userbyid.getuserbyid(this.userid)
       .subscribe((user)=>{
         if(user){

@@ -1,6 +1,5 @@
     <mat-dialog-content class="bg-white">
         <button class="inline-block float-right text-red-500" mat-dialog-close="close">X</button>
-
         <h1 class="text-green-600 ">Confirm Order</h1>
         <form class="text-black"  [formGroup]="productForm" (ngSubmit)='orderproduct()'>
             <div class="flex flex-col gap-2 items-center">
@@ -23,17 +22,14 @@
                         <label for="whitecolor" *ngIf="whitecolor">White</label>
                     </div>
                 </div>
-                <div class="flex-col items-start">
+                <!-- <div class="flex-col items-start">
                     <label>Contact Number:</label>
                     <input type="number" formControlName="contactnumber" placeholder="Contact Number">
-                </div>
+                </div> -->
                 <div class="flex-col ">
                     <label>Delivery Address:</label>
                     <input type="string" formControlName="deliveryaddress" placeholder="Delivery address">
-
                 </div>
-                
-                    
                 <div class="flex flex-col items-start mt-4">
                     
                     <!-- <input type="file" (change)="getFile($event)"> -->

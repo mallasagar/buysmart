@@ -3,6 +3,7 @@ import { ProductlistService } from 'src/app/services/productlist.service';
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 // import { MatCommonModule } from '@angular/material/core';
+import { filter, map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateProductService } from 'src/app/services/updateproduct.service';
 import { ToastrService } from 'ngx-toastr';
@@ -25,7 +26,13 @@ export class HomeComponent implements OnInit {
   productbyid:any;
   orderForm:FormGroup;
   buyproductid:number;
-
+  cartitem:any;
+  cartdata:any[];
+  cartarray:any;
+  cartmap:any;
+  cartproductid:any;
+  cartstatus:boolean=false;
+  
   constructor(
               private toast: ToastrService, 
               private matdialog: MatDialog,
@@ -42,47 +49,74 @@ export class HomeComponent implements OnInit {
   
   ngOnInit():void {    
    this.fetchproduct()
-  
   }
 
-
+// get all the products available 
   fetchproduct(){
     this.product=this.productservice.productlist().subscribe((product)=>{
       if(product){
         this.product=product;
         // converting object into array
-        this.objectarray=Object.values(this.product)
+         this.objectarray=Object.values(this.product);
       }
     })
   }
 
+ 
+
   addtocart(productid:number){
+    // get product id , loggedin or not  and userid
       this.productid = Number(productid)
         const isloggedin=sessionStorage.getItem('Loggedin');
         this.userid=Number(sessionStorage.getItem('id'));
+        // check whether user is logged in or not and update the user if not logged navigate to the login page 
    if(!isloggedin){
     this.toast.success("Signin First")
     this.router.navigate(['/login']);
    }else{
+    // creating a form group to add productid  and userid for cart
     this.orderForm= new FormGroup(
       {
         productid:new FormControl(this.productid),
         userid:new FormControl(this.userid)
       });
-        this.addcarttouserbyid()
-       
-       }
+
+      //get the cart list and determine whether there is any cart already  
+      this.productservice.cartlist()
+      // get all cart list items
+     .subscribe((data:any)=>
+     {this.cartitem=data
+      // filter out product cart that match userid
+      this.cartdata=this.cartitem.filter(item=>item.userid===this.userid)
+      for(let i=0; i<this.cartdata.length; i++){
+          // console.log(this.productid, this.cartarray[i].productid)
+          if( this.productid===this.cartdata[i].productid){
+            this.cartstatus=true;
+            // if any one  condition in a loop comes true break the loop out
+            break
+          }
+        }
+        // check if product already exist in cart or not
+        if(this.cartstatus===true){
+          this.toast.error("product already in cart")
+        }else{
+          this.addcarttouserbyid()
+        }
+          }
+        )
+      }
   }
 
   getproductbyid(productid){
     this.productid=Number(productid)
+    // get the product by id
     this.productbyid=this.UpdateProductService.productupdate(this.productid).subscribe((product)=>{
+      // if product exist pass the data to the component through matdialogue
       if(product){
         this.productbyid=product
         this.matdialog.open(DetailComponent,{
          width:'700px',
          height:'400px',
-         
          data:{
            productname: this.productbyid.productname,
            productmakeyear: this.productbyid.productmakeyear,
@@ -106,6 +140,7 @@ export class HomeComponent implements OnInit {
    }
 
 
+  //  add the product to the user with userid  function
   addcarttouserbyid(){
     this.http.post('http://localhost:3000/orders',this.orderForm.value)
       .subscribe((order)=>{
@@ -115,6 +150,7 @@ export class HomeComponent implements OnInit {
   })
   }
  
+  // add the product id and user id to the confirmation database.
   buyproductbyid(productid:number){
     this.buyproductid=productid;
     const isloggedin=sessionStorage.getItem('Loggedin');

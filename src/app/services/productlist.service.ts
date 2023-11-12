@@ -17,5 +17,9 @@ export class ProductlistService {
     this.producttocart=productid
   }
 
+  cartlist(){
+    return this.http.get<any>("http://localhost:3000/orders")
+  }
+
   
 }
